@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route } from "wouter";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import SpinWheelPage from "./pages/spin-wheel";
+import AdminDashboard from "./pages/admin-dashboard";
+
+// Optional: Create and customize a theme (can be removed if default MUI theme is fine)
+// import theme from "./theme"; // If you have a custom theme
+
+
+
+const queryClient = new QueryClient();
+
+function Router() {
+  return (
+    <Switch>
+      <Route path="/" component={SpinWheelPage} />
+      {/* <Route path="/admin" component={AdminDashboard} /> */}
+      {/* <Route component={NotFound} /> */}
+    </Switch>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <QueryClientProvider client={queryClient}>
+     
+         
+          <Router />
+       
+    </QueryClientProvider>
   );
 }
 
