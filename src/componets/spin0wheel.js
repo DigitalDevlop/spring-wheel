@@ -36,27 +36,6 @@ export default function SpinWheel() {
     { label: "🎊 Mega Power 2" },
   ];
 
-  // const handleSpin = () => {
-  //   if (isSpinning) return;
-  //   setIsSpinning(true);
-
-  //   const randomRotation = Math.floor(Math.random() * 360) + 1440;
-  //   setRotation((prev) => prev + randomRotation);
-
-  //   setTimeout(() => {
-  //     setIsSpinning(false);
-
-  //     // Decide win/lose
-  //     const winningSegment = segments[Math.floor(Math.random() * segments.length)];
-  //     if (winningSegment.label.includes("Try Again")) {
-  //       setToast({ open: true, message: "😅 Try Again Next Time!", severity: "info" });
-  //     } else {
-  //       setWinnerPrize(winningSegment.label);
-  //       setOpenForm(true);
-  //     }
-  //   }, 4000);
-  // };
-
   // Replace with your actual Google Form "formResponse" URL
   const GOOGLE_FORM_ACTION =
     "https://docs.google.com/forms/d/e/1FAIpQLSfcLs8nAeOG7HnDTZeB09mcITFQ4IyMySZLByx4nCyFd5E0pw/formResponse";
@@ -94,11 +73,16 @@ export default function SpinWheel() {
 
     setIsSpinning(true);
     const randomRotation = Math.floor(Math.random() * 360) + 1440;
-    setRotation((prev) => prev + randomRotation);
+    const newRotation = rotation + randomRotation; // store total rotation
+    setRotation(newRotation);
 
     setTimeout(() => {
       setIsSpinning(false);
-      const winningSegment = segments[Math.floor(Math.random() * segments.length)];
+      const normalizedRotation = newRotation % 360; // normalize rotation within one turn
+      const segmentAngle = 360 / segments.length;
+      const adjustedRotation = (360 - normalizedRotation + segmentAngle / 2) % 360;
+      const winningIndex = Math.floor(adjustedRotation / segmentAngle);
+      const winningSegment = segments[winningIndex >= segments.length ? 0 : winningIndex];
 
       if (winningSegment.label.includes("Try Again")) {
         setToast({ open: true, message: "😅 Try Again Next Time!", severity: "info" });
