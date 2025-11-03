@@ -28,9 +28,9 @@ export default function SpinWheel() {
   const segments = [
     { label: "🎯 Try Again" },
     { label: "💰 Ada Sampatha" },
+    { label: "🎯 Try Again" },
     { label: "🏆 Gift Voucher" },
     { label: "🎯 Try Again" },
-    { label: "⭐ Special" },
     { label: "🎪 Govi Setha" },
     { label: "🎯 Try Again" },
     { label: "🎊 Mega Power 2" },
@@ -206,18 +206,18 @@ export default function SpinWheel() {
 
         {/* Pointer */}
         <Box
-          sx={{
-            position: "absolute",
-            top: -10,
-            left: "50%",
-            transform: "translateX(-50%)",
-            width: 0,
-            height: 0,
-            borderLeft: "10px solid transparent",
-            borderRight: "10px solid transparent",
-            borderBottom: "20px solid red",
-          }}
-        />
+  sx={{
+    position: "absolute",
+    top: "-10px", // you can adjust to sit nicely above the wheel
+    left: "50%",
+    transform: "translateX(-50%)",
+    width: 0,
+    height: 0,
+    borderLeft: "10px solid transparent",
+    borderRight: "10px solid transparent",
+    borderTop: "20px solid red", // 👈 changed from borderBottom → borderTop
+  }}
+/>
       </Box>
 
       {/* Spin Button */}
