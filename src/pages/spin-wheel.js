@@ -65,7 +65,7 @@ export default function SpinWheelPage() {
       }}
     >
       {/* Header */}
-      <Box sx={{ position: "relative", zIndex: 50, bgcolor: "rgba(255,255,255,0.05)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
+      {/* <Box sx={{ position: "relative", zIndex: 50, bgcolor: "rgba(255,255,255,0.05)", backdropFilter: "blur(10px)", borderBottom: "1px solid rgba(255,255,255,0.2)" }}>
         <Container sx={{ py: 2 }}>
           <Grid container alignItems="center" justifyContent="space-between">
             <Grid item display="flex" alignItems="center" gap={2}>
@@ -86,7 +86,7 @@ export default function SpinWheelPage() {
                 Lucky Spin
               </Typography>
             </Grid>
-            {/* <Grid item display="flex" gap={2}>
+            <Grid item display="flex" gap={2}>
               <Button onClick={handleNewGame} variant="outlined" color="inherit">
                 🎮 New Game
               </Button>
@@ -95,10 +95,10 @@ export default function SpinWheelPage() {
                   ⚙️ Admin
                 </Button>
               </Link>
-            </Grid> */}
+            </Grid>
           </Grid>
         </Container>
-      </Box>
+      </Box> */}
 
       {/* Main Content */}
       {!showWheel ? (

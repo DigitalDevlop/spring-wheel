@@ -130,13 +130,42 @@ export default function SpinWheel() {
     <Box sx={{ textAlign: "center", p: 4 }}>
       {showConfetti && <Confetti numberOfPieces={400} recycle={false} />}
 
-      <Typography variant="h3" sx={{ mb: 2, color: "white" }}>
-        🎰 Spin the Wheel! 🎰
-      </Typography>
+      <Typography
+  variant="h3"
+  sx={{
+    mb: 2,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
 
-      <Typography variant="subtitle1" sx={{ color: "white", mb: 2 }}>
-        You have {spinsLeft} spin{spinsLeft !== 1 && "s"} left today.
-      </Typography>
+    // ✅ Responsive font sizes
+    fontSize: {
+      xs: "1.75rem", // Mobile
+      sm: "2.2rem",  // Tablets
+      md: "3rem",    // Desktop
+    }
+  }}
+>
+  🎰 Spin the Wheel! 🎰
+</Typography>
+
+<Typography
+  variant="subtitle1"
+  sx={{
+    color: "white",
+    mb: 2,
+    textAlign: "center",
+
+    // ✅ Responsive subtitle
+    fontSize: {
+      xs: "0.9rem",
+      sm: "1rem",
+      md: "1.2rem",
+    }
+  }}
+>
+  You have {spinsLeft} spin{spinsLeft !== 1 && "s"} left today.
+</Typography>
 
     {/* Wheel */}
 <Box sx={{ position: "relative", mx: "auto", width: 320, height: 320 }}>
