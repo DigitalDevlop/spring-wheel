@@ -158,7 +158,7 @@ export default function SpinWheel() {
     fontSize: {
       xs: "1.75rem", // Mobile
       sm: "2.2rem",  // Tablets
-      md: "3rem",    // Desktop
+      md: "2.9rem",    // Desktop
     }
   }}
 >
@@ -219,23 +219,37 @@ Spin the Wheel!
       const angle = (360 / segments.length) * i + 22.5; // center each label
       return (
         <Typography
-          key={i}
-          sx={{
-            position: "absolute",
-            top: "40%",
-            left: "40%",
-            transform: `rotate(${angle}deg) translate(0, -120px) rotate(-${angle}deg)`,
-            transformOrigin: "center",
-            color: "white",
-            fontWeight: "bold",
-            fontSize: "0.9rem",
-            textShadow: "1px 1px 3px black",
-            width: "50px",
-            textAlign: "center",
-          }}
-        >
-          {segment.label}
-        </Typography>
+        key={i}
+        sx={{
+          position: "absolute",
+          top: "40%",
+          left: "40%",
+          transform: {
+            xs: `rotate(${angle}deg) translate(0, -95px) rotate(-${angle}deg)`, // mobile (closer to center)
+            sm: `rotate(${angle}deg) translate(0, -110px) rotate(-${angle}deg)`, // tablet
+            md: `rotate(${angle}deg) translate(0, -120px) rotate(-${angle}deg)`, // desktop
+          },
+          transformOrigin: "center",
+          color: "white",
+          fontWeight: "bold",
+          fontSize: {
+            xs: "0.6rem", // smaller on mobile
+            sm: "0.75rem", // tablet
+            md: "0.9rem", // desktop
+          },
+          textShadow: "1px 1px 3px black",
+          width: {
+            xs: "45px", // smaller width for mobile
+            sm: "50px", // tablet
+            md: "55px", // desktop
+          },
+          textAlign: "center",
+          lineHeight: 1.2,
+        }}
+      >
+        {segment.label}
+      </Typography>
+      
       );
     })}
   </motion.div>
