@@ -127,14 +127,24 @@ export default function SpinWheel() {
   const spinsLeft = spinData.date === today ? 3 - spinData.spins : 3;
 
   return (
-    <Box sx={{ textAlign: "center", p: 4 }}>
+    <Box
+ sx={{
+    width: "400px",        // ✅ FIXED WIDTH
+    height: "300px", 
+    textAlign: "center",
+    p: 4,
+    background: "transparent",     // ✅ transparent background
+    backdropFilter: "none",         // ✅ remove blur if any
+    boxShadow: "none",              // ✅ remove default shadow
+  }}
+>
       {showConfetti && <Confetti numberOfPieces={400} recycle={false} />}
 
       <Typography
   variant="h3"
   sx={{
     mb: 2,
-    color: "white",
+    color: "black",
     fontWeight: "bold",
     textAlign: "center",
 
@@ -146,13 +156,13 @@ export default function SpinWheel() {
     }
   }}
 >
-  🎰 Spin the Wheel! 🎰
+Spin the Wheel!
 </Typography>
 
 <Typography
   variant="subtitle1"
   sx={{
-    color: "white",
+    color: "black",
     mb: 2,
     textAlign: "center",
 

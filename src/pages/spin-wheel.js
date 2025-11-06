@@ -58,10 +58,12 @@ export default function SpinWheelPage() {
   return (
     <Box
       sx={{
-        minHeight: "100vh",
-        background: "linear-gradient(to bottom right, #7e57c2, #42a5f5, #26c6da)",
-        position: "relative",
-        overflow: "hidden",
+        textAlign: "center",
+        p: 4,
+        background: "transparent",     // ✅ transparent background
+        backdropFilter: "none",         // ✅ remove blur if any
+        boxShadow: "none",          // ✅ remove default shadow
+        // backgroundColor: "#ffd600",
       }}
     >
       {/* Header */}
