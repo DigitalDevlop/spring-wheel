@@ -128,16 +128,22 @@ export default function SpinWheel() {
 
   return (
     <Box
- sx={{
-    width: "400px",        // ✅ FIXED WIDTH
-    height: "300px", 
-    textAlign: "center",
-    p: 4,
-    background: "transparent",     // ✅ transparent background
-    backdropFilter: "none",         // ✅ remove blur if any
-    boxShadow: "none",              // ✅ remove default shadow
-  }}
->
+    sx={{
+      width: { xs: "100%", sm: "400px" },   // responsive width
+      height: { xs: "auto", sm: "450px" },  // full widget height
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      textAlign: "center",
+      margin: "0 auto",
+      background: "transparent",            // transparent background
+      boxShadow: "none",
+      p: { xs: 2, sm: 3 },
+      overflow: "hidden",                   // prevent cutoff inside iframe
+    }}
+  >
+  
       {showConfetti && <Confetti numberOfPieces={400} recycle={false} />}
 
       <Typography
@@ -178,7 +184,15 @@ Spin the Wheel!
 </Typography>
 
     {/* Wheel */}
-<Box sx={{ position: "relative", mx: "auto", width: 320, height: 320 }}>
+    <Box
+  sx={{
+    position: "relative",
+    mx: "auto",
+    width: { xs: 260, sm: 300, md: 320 },
+    height: { xs: 260, sm: 300, md: 320 },
+  }}
+>
+
   <motion.div
     style={{
       width: "100%",
@@ -230,28 +244,28 @@ Spin the Wheel!
         {/* Pointer */}
         <Box
   sx={{
-    position: "absolute",
-    top: "-10px", // you can adjust to sit nicely above the wheel
-    left: "50%",
-    transform: "translateX(-50%)",
-    width: 0,
-    height: 0,
-    borderLeft: "10px solid transparent",
-    borderRight: "10px solid transparent",
-    borderTop: "20px solid red", // 👈 changed from borderBottom → borderTop
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    minHeight: "80vh", // ✅ vertically center
+    textAlign: "center",
+    background: "transparent",
+    p: { xs: 2, sm: 3, md: 4 }, // ✅ responsive padding
   }}
 />
       </Box>
 
       {/* Spin Button */}
       <Button
-        variant="contained"
-        color="secondary"
-        size="large"
-        onClick={handleSpin}
-        disabled={isSpinning}
-        sx={{ mt: 4 }}
-      >
+  variant="contained"
+  color="secondary"
+  size="large"
+  onClick={handleSpin}
+  disabled={isSpinning}
+  sx={{ mt: 3, mb: 1 }}
+>
+
         {isSpinning ? "⏳ Spinning..." : "🎡 Spin Now!"}
       </Button>
 
