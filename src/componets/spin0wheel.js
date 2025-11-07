@@ -192,7 +192,21 @@ Spin the Wheel!
     height: { xs: 260, sm: 300, md: 320 },
   }}
 >
-
+{/* 🎯 Pointer */}
+<Box
+    sx={{
+      position: "absolute",
+      top: "-15px",              // move it above the circle
+      left: "54%",
+      transform: "translateX(-50%) rotate(180deg)",
+      width: 0,
+      height: 0,
+      borderLeft: "12px solid transparent",
+      borderRight: "12px solid transparent",
+      borderBottom: "20px solid #ff007f",
+      zIndex: 10,
+    }}
+  />
   <motion.div
     style={{
       width: "100%",
