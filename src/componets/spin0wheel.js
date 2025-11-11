@@ -14,6 +14,10 @@ import Confetti from "react-confetti"; // ✅ Add this line
 import {
   CircularProgress, // ✅ Add this line inside MUI imports
 } from "@mui/material";
+import image1 from "./Dana Nidanaya.png"
+import image2 from "./Mega Power.png"
+import image3 from "./Govisetha.png"
+import image4 from "./Hadahana.png"
 
 export default function SpinWheel() {
   const [isSpinning, setIsSpinning] = useState(false);
@@ -26,14 +30,14 @@ export default function SpinWheel() {
   const [showConfetti, setShowConfetti] = useState(false);
 
   const segments = [
-    { label: "🎯 Try Again" },
-    { label: "💰 Ada Sampatha" },
-    { label: "🎯 Try Again" },
-    { label: "🏆 Gift Voucher" },
-    { label: "🎯 Try Again" },
-    { label: "🎪 Govi Setha" },
-    { label: "🎯 Try Again" },
-    { label: "🎊 Mega Power 2" },
+    { label: "Try Again" },
+    { label: "Dana Nidanaya", image: image1},
+    { label: "Try Again" },
+    { label: "Mega Power", image: image2},
+    { label: "Try Again" },
+    { label: "Govisetha", image: image3},
+    { label: "Try Again" },
+    { label: "Hadahana", image: image4},
   ];
 
   // Replace with your actual Google Form "formResponse" URL
@@ -227,16 +231,16 @@ Spin the Wheel!
       width: "100%",
       height: "100%",
       borderRadius: "50%",
-      border: "8px solid white",
+      border: "2px solid black",
       background: `conic-gradient(
-        #FF6B35 0deg 45deg,
-        #4ECDC4 45deg 90deg,
-        #FFD700 90deg 135deg,
-        #00D084 135deg 180deg,
-        #9B59B6 180deg 225deg,
-        #FF4757 225deg 270deg,
-        #3498DB 270deg 315deg,
-        #FFA500 315deg 360deg
+        red 0deg 45deg,
+        #fff 45deg 90deg,
+        red  90deg 135deg,
+        #fff 135deg 180deg,
+        red  180deg 225deg,
+        #FFf 225deg 270deg,
+        red  270deg 315deg,
+        #FFf 315deg 360deg
       )`,
       position: "relative",
     }}
@@ -245,42 +249,53 @@ Spin the Wheel!
   >
     {/* 🎯 Prize Labels on Wheel */}
     {segments.map((segment, i) => {
-      const angle = (360 / segments.length) * i + 22.5; // center each label
-      return (
+  const angle = (360 / segments.length) * i + 22.5;
+  return (
+    <Box
+      key={i}
+      sx={{
+        position: "absolute",
+        top: "43%",
+        left: "44%",
+        transform: {
+          xs: `rotate(${angle}deg) translate(0, -85px) rotate(-${angle}deg)`,
+          sm: `rotate(${angle}deg) translate(0, -100px) rotate(-${angle}deg)`,
+          md: `rotate(${angle}deg) translate(0, -115px) rotate(-${angle}deg)`,
+        },
+        transformOrigin: "center",
+        textAlign: "center",
+      }}
+    >
+      {segment.image ? (
+        <img
+          src={segment.image}
+          alt={segment.label}
+          style={{
+            width: "60px",
+            height: "60px",
+            // borderRadius: "8px",
+            objectFit: "contain",
+          }}
+        />
+      ) : (
         <Typography
-        key={i}
-        sx={{
-          position: "absolute",
-          top: "40%",
-          left: "40%",
-          transform: {
-            xs: `rotate(${angle}deg) translate(0, -95px) rotate(-${angle}deg)`, // mobile (closer to center)
-            sm: `rotate(${angle}deg) translate(0, -110px) rotate(-${angle}deg)`, // tablet
-            md: `rotate(${angle}deg) translate(0, -120px) rotate(-${angle}deg)`, // desktop
-          },
-          transformOrigin: "center",
-          color: "white",
-          fontWeight: "bold",
-          fontSize: {
-            xs: "0.6rem", // smaller on mobile
-            sm: "0.75rem", // tablet
-            md: "0.9rem", // desktop
-          },
-          textShadow: "1px 1px 3px black",
-          width: {
-            xs: "45px", // smaller width for mobile
-            sm: "50px", // tablet
-            md: "55px", // desktop
-          },
-          textAlign: "center",
-          lineHeight: 1.2,
-        }}
-      >
-        {segment.label}
-      </Typography>
-      
-      );
-    })}
+          sx={{
+            color: "black",
+            fontWeight: "bold",
+            fontSize: {
+              xs: "0.6rem",
+              sm: "0.75rem",
+              md: "0.9rem",
+            },
+            // textShadow: "1px 1px 3px black",
+          }}
+        >
+          {segment.label}
+        </Typography>
+      )}
+    </Box>
+  );
+})}
   </motion.div>
 
 
