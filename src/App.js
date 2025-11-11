@@ -1,7 +1,7 @@
 import { Switch, Route } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SpinWheelPage from "./pages/spin-wheel";
-import AdminDashboard from "./pages/admin-dashboard";
+
 
 // Optional: Create and customize a theme (can be removed if default MUI theme is fine)
 // import theme from "./theme"; // If you have a custom theme

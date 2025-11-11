@@ -1,20 +1,16 @@
 import { useState } from "react";
-import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { useQuery } from "@tanstack/react-query";
 import WinnerModal from "../componets/winner-model";
-import TryAgainModal from "../componets/try-again-model";
 import ConfettiCelebration from "../componets/confititi-celebreation";
 import SpinWheel from "../componets/spin0wheel";
 import MobileInput from "../componets/mobile-input";
-import { Box, Button, Container, Typography, Grid, Paper } from "@mui/material";
+import { Box, Container, Typography, Grid, Paper } from "@mui/material";
 export default function SpinWheelPage() {
   const [currentMobile, setCurrentMobile] = useState("");
   const [showWheel, setShowWheel] = useState(true);
-  const [customerData, setCustomerData] = useState(null);
   const [spinResult, setSpinResult] = useState(null);
   const [showWinnerModal, setShowWinnerModal] = useState(false);
-  const [showTryAgainModal, setShowTryAgainModal] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
 
   const { data: prizes } = useQuery({
