@@ -226,6 +226,7 @@ Spin the Wheel!
       zIndex: 10,
     }}
   />
+ 
   <motion.div
     style={{
       width: "100%",
@@ -234,7 +235,7 @@ Spin the Wheel!
       border: "2px solid black",
       background: `conic-gradient(
         red 0deg 45deg,
-        #fff 45deg 90deg,
+        #fff 45deg 90deg, 
         red  90deg 135deg,
         #fff 135deg 180deg,
         red  180deg 225deg,
@@ -243,6 +244,7 @@ Spin the Wheel!
         #FFf 315deg 360deg
       )`,
       position: "relative",
+       // color chnaged
     }}
     animate={{ rotate: rotation }}
     transition={{ duration: 4, ease: "easeOut" }}
