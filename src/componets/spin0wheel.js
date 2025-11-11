@@ -51,13 +51,25 @@ export default function SpinWheel() {
 
     // ---- DAILY LIMIT (3 spins per day) ----
     const today = new Date().toISOString().split("T")[0];
-    const spinData = JSON.parse(localStorage.getItem("spinData")) || { spins: 0, date: today };
+    const spinData = JSON.parse(localStorage.getItem("spinData")) || { spins: 0, date: today, hasWon: false };
 
     if (spinData.date !== today) {
       spinData.spins = 0;
+      spinData.hasWon = false;
       spinData.date = today;
     }
 
+     // 🛑 Stop if already won today
+     if(spinData.hasWon) {
+      setToast({
+        open: true,
+        message: "🎡 You’ve used all 3 spins for today! Come back tomorrow.",
+        severity: "warning",
+      });
+      return;
+     }
+
+      // 🛑 Stop if already used 3 spins (without a win)
     if (spinData.spins >= 3) {
       setToast({
         open: true,
@@ -87,6 +99,9 @@ export default function SpinWheel() {
       if (winningSegment.label.includes("Try Again")) {
         setToast({ open: true, message: "😅 Try Again Next Time!", severity: "info" });
       } else {
+        // 🏆 Mark as winner and stop further spins today
+      spinData.hasWon = true;
+      localStorage.setItem("spinData", JSON.stringify(spinData));
         setWinnerPrize(winningSegment.label);
         setOpenForm(true);
         setShowConfetti(true);
