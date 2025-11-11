@@ -273,8 +273,8 @@ Spin the Wheel!
           src={segment.image}
           alt={segment.label}
           style={{
-            width: "60px",
-            height: "60px",
+            width: "45px",
+            height: "30px",
             // borderRadius: "8px",
             objectFit: "contain",
           }}
